@@ -1,0 +1,41 @@
+@font-face {
+    font-family: "OneShinhan";
+    font-weight: 100;
+    src: url("assets/fonts/OneShinhanLight.otf");
+}
+
+@font-face {
+    font-family: "OneShinhan";
+    font-weight: 500;
+    src: url("assets/fonts/OneShinhanMedium.otf");
+}
+
+
+@font-face {
+    font-family: "OneShinhan";
+    font-weight: 900;
+    src: url("assets/fonts/OneShinhanBold.otf");
+}
+
+body {
+    margin: 0;
+    font-family: "OneShinhan";
+    font-weight: 500;   
+    overflow-x: hidden;
+}
+
+.main-top{
+    width: 100vw;
+    height: 100vh;
+}
+
+.image-main{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#footer-custom{
+    width: 100vw;
+    height: 100px;
+}
