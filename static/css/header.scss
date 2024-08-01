@@ -1,12 +1,15 @@
 .class-header{
     width: 100vw;
     display: flex;
+    position: fixed;
+    top: 0;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: white;
     color: black;
     font-size: 17px;
+    z-index: 30;
 
     .wrap-header{
         height: 6em;
