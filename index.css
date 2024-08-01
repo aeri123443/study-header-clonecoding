@@ -1,0 +1,25 @@
+@font-face {
+    font-family: "OneShinhan";
+    font-weight: 100;
+    src: url("assets/fonts/OneShinhanLight.otf");
+}
+
+@font-face {
+    font-family: "OneShinhan";
+    font-weight: 500;
+    src: url("assets/fonts/OneShinhanMedium.otf");
+}
+
+
+@font-face {
+    font-family: "OneShinhan";
+    font-weight: 900;
+    src: url("assets/fonts/OneShinhanBold.otf");
+}
+
+body {
+    margin: 0;
+    font-family: "OneShinhan";
+    font-weight: 500;
+    background-color: gray;
+}
