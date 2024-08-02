@@ -11,9 +11,11 @@
     font-size: 17px;
     z-index: 30;
 
-    .header-top{
+    #header-top{
         height: 6em;
         display: flex;
+        position: relative;
+        top: 0;
         flex-direction: row;
         justify-content: center;
         width: 100%;
@@ -22,7 +24,12 @@
         box-sizing: border-box; 
         background-color: #fff0;
         color: white;
-        transition: all 0.25s ease;
+        transition: all 0.3s ease;
+
+        // &.transparency{
+        //     background-color: #fff7;
+        //     backdrop-filter: blur(4px);
+        // }
 
         .wrap-header{
             display: flex;
@@ -125,7 +132,7 @@
         height: 0;
         opacity: 0;
         background-color: white;
-        transition: all 0.25s ease;
+        transition: all 0.3s ease;
 
         .wrap-sub-header{
             display: flex;
@@ -139,7 +146,7 @@
                 flex-direction: row;
                 justify-content: flex-start;
                 align-items: flex-start;
-                transition: opacity 0.25s ease;
+                transition: opacity 0.3s ease;
                 height: calc(100% - 6em);
     
     

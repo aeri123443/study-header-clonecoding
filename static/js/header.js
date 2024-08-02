@@ -1,4 +1,4 @@
-const wrapHeader = document.querySelector('.header-top');
+const headerTop = document.querySelector('#header-top');
 const headerBottom = document.querySelector('.header-bottom');
 const wrapSubHeader = document.querySelector('.wrap-sub-header');
 const classHeader = document.querySelector('.class-header');
@@ -14,17 +14,109 @@ const liGNB = document.querySelector('.li-gnb');
 
 const subHeaders = document.querySelectorAll('.sub-header');
 
+let preScrollTop = 0;
+
+// 사용자 정의 속성
+const topBlur = {
+    true: () => {
+        console.log('topBlur true');
+        headerTop.style.backdropFilter = 'blur(4px)';
+        headerTop.style.backgroundColor ='#fff7';
+        gnb.style.color = '#000';
+        languagesTxt.style.color = '#000';
+        languagesArrowImg.style.filter = 'invert(0)';
+        allMenuImg.style.filter = 'invert(0)';
+        logoImg.style.filter = 'none';
+    },
+    false: () => {
+        console.log('topBlur false');
+        headerTop.style.backdropFilter = 'none';
+        headerTop.style.backgroundColor ='#fff0';
+        gnb.style.color = '#fff';
+        languagesTxt.style.color = '#fff';
+        languagesArrowImg.style.filter = 'invert(100%)';
+        allMenuImg.style.filter = 'invert(100%)';
+        logoImg.style.filter = 'invert(100%) saturate(0%) brightness(200%)';
+    },
+};
+
+const bottomExpand = {
+    true: () => {
+        console.log('bottomExpand T');
+        wrapSubHeader.style.display = 'flex';
+        headerTop.style.backgroundColor ='#fff';
+        headerTop.style.borderBottom = '1.7px solid #e6e6e6';
+        headerBottom.style.height = '19em';
+        headerBottom.style.opacity = '1';
+        gnb.style.color = '#000';
+        languagesTxt.style.color = '#000';
+        logoImg.style.filter = 'none';
+        languagesArrowImg.style.filter = 'invert(0)';
+        allMenuImg.style.filter = 'invert(0)';
+        headerTop.ontransitionend = ()=>{};
+    },
+    false: () => {
+        console.log('bottomExpand F');
+        headerTop.style.borderBottom = '0';
+        headerBottom.style.height = '0';
+        headerBottom.style.opacity = '0';
+    
+        headerTop.dataset.blur === "true" ? topBlur.true() : topBlur.false();
+    
+        headerTop.ontransitionend = () => {
+            wrapSubHeader.style.display = 'none';
+        }
+    }
+};
+
+const topHidden = {
+    true: () => {
+        if ( (((window.location.pathname) === '/') || ((window.location.pathname) === '/index.html')) ){
+            const mainTopHight = document.getElementById("main-top").offsetHeight;
+            
+            if (scrollTop < mainTopHight/2){
+                headerTop.style.top = '0';
+            } else{
+                if (headerTop.dataset.expand === "true") { headerTop.style.top = '0'}
+                else {headerTop.style.top = '-6em'}
+            }
+
+            
+        } else {
+            if (headerTop.dataset.expand === "true") { headerTop.style.top = '0'}
+            else {headerTop.style.top = '-6em'}
+        } 
+        
+    },
+    false: () => {
+        headerTop.style.top = '0';
+    },
+};
+
+
+// 속성 변화시 ..
+const callback = () => {
+    headerTop.dataset.hidden === "true" ? topHidden.true() : topHidden.false();
+    headerTop.dataset.blur === "true" ? topBlur.true() : topBlur.false();
+    headerTop.dataset.expand === "true" ? bottomExpand.true(): bottomExpand.false();
+
+};
+
+// 속성 변화 감지
+const observer = new MutationObserver(callback);
+const config = { attributes: true, attributeFilter: ['data-blur', 'data-expand'] };
+
+observer.observe(headerTop, config);
+
+
 logo.addEventListener('click', ()=>{
     window.location.href = '/index.html';
 });
 
-
-
 liGNBs.forEach((item, index) => {
     item.addEventListener('click', ()=>{
         const link = item.querySelector('a');
-        window.location.href = link.href;
-
+        window.location.href = link.href;        
     })
 
     item.addEventListener('mouseenter', ()=>{
@@ -34,37 +126,73 @@ liGNBs.forEach((item, index) => {
         })
         subHeaders[index].style.opacity = '1';
         subHeaders[index].style.zIndex = '40';
-
     })
 });
 
 gnb.addEventListener('mouseover', function() {
-    wrapSubHeader.style.display = 'flex';
-    wrapHeader.style.backgroundColor ='#fff';
-    wrapHeader.style.borderBottom = '1.7px solid #e6e6e6';
-    headerBottom.style.height = '19em';
-    headerBottom.style.opacity = '1';
-    gnb.style.color = '#000';
-    languagesTxt.style.color = '#000';
-    languagesArrowImg.style.filter = 'invert(0)';
-    allMenuImg.style.filter = 'invert(0)';
-    logoImg.style.filter = 'none';
-
-    wrapHeader.ontransitionend = ()=>{};
+    headerTop.dataset.expand = "true";
 });
 
 classHeader.addEventListener('mouseleave', function() {
-    wrapHeader.style.backgroundColor ='#fff0';
-    wrapHeader.style.borderBottom = '0';
-    headerBottom.style.height = '0';
-    headerBottom.style.opacity = '0';
-    gnb.style.color = '#fff';
-    languagesTxt.style.color = '#fff';
-    languagesArrowImg.style.filter = 'invert(100%)';
-    allMenuImg.style.filter = 'invert(100%)';
-    logoImg.style.filter = 'invert(100%) saturate(0%) brightness(200%) ';
+    headerTop.dataset.expand = "false";
+});
 
-    wrapHeader.ontransitionend = () => {
-        wrapSubHeader.style.display = 'none';
+
+// 스크롤 감지
+
+window.addEventListener('scroll', function() {
+    
+    let nextScrollTop = $(window).scrollTop();
+  
+    // 스크롤 다운/업 감지
+	if(scrollTop < nextScrollTop) {
+      console.log('Down!');
+      headerTop.dataset.hidden = "true";
+    }
+	else {
+      console.log('Up!');
+      headerTop.dataset.hidden = "false";
+    }
+
+	scrollTop = nextScrollTop;
+
+    // main화면 최상단에 스크롤이 있을 경우 블러 제거
+    if ( (((window.location.pathname) === '/') || ((window.location.pathname) === '/index.html')) ){
+        const mainTopHight = document.getElementById("main-top").offsetHeight;
+        
+        if (scrollTop < mainTopHight) {
+            headerTop.dataset.blur = "false";
+            console.log(headerTop.dataset.blur);
+        } else {
+            headerTop.dataset.blur = "true";
+            console.log(headerTop.dataset.blur);
+        }
+        
+    } else {
+        headerTop.dataset.blur = "true";
+        console.log(headerTop.dataset.blur);
     }
 });
+
+
+// 기본 호출 시 실행
+
+let scrollTop = $(window).scrollTop();
+
+wrapSubHeader.style.display = 'none';
+
+if ( ((window.location.pathname) === '/') || ((window.location.pathname) === '/index.html') ){
+    const mainTopHight = document.getElementById("main-top").offsetHeight;
+
+    if( scrollTop < mainTopHight ) {
+        headerTop.dataset.blur = "false";
+        console.log(headerTop.dataset.blur);
+    } else {
+        headerTop.dataset.blur = "true";
+        console.log(headerTop.dataset.blur);
+    }
+
+} else {
+    headerTop.dataset.blur = "true";
+    console.log(headerTop.dataset.blur);
+}
