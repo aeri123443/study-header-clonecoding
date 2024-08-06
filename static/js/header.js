@@ -93,13 +93,23 @@ const topHidden = {
     },
 };
 
+const viewScreenMenu = {
+    true: () => {  
+        console.log('viewScreenMenu T');
+        headerTop.style.backgroundColor = '#0046ff';
+    },
+    false: () => {
+
+    }
+};
+
 
 // 속성 변화시 ..
 const callback = () => {
+    headerTop.dataset.viewscreenmenu === "true" ? viewScreenMenu.true(): viewScreenMenu.false();
     headerTop.dataset.hidden === "true" ? topHidden.true() : topHidden.false();
     headerTop.dataset.blur === "true" ? topBlur.true() : topBlur.false();
     headerTop.dataset.expand === "true" ? bottomExpand.true(): bottomExpand.false();
-
 };
 
 // 속성 변화 감지
