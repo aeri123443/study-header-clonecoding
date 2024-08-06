@@ -1,6 +1,5 @@
 .class-header {
   width: 100%;
-  min-height: 6em;
   display: flex;
   position: fixed;
   top: 0;
@@ -12,7 +11,7 @@
   z-index: 30;
 }
 .class-header #header-top {
-  height: 6em;
+  height: 5em;
   width: 100%;
   display: flex;
   position: relative;
@@ -108,6 +107,9 @@
 .class-header #header-top .wrap-header .header-right .all-menu > img {
   height: 1.5em;
   filter: invert(100%);
+}
+.class-header #header-top .wrap-header .header-right .all-menu:hover {
+  cursor: pointer;
 }
 .class-header .header-bottom {
   display: flex;

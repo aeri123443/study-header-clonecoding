@@ -1,6 +1,6 @@
 .class-header{
     width: 100%;
-    min-height: 6em;
+    // min-height: 4em;
     display: flex;
     position: fixed;
     top: 0;
@@ -12,7 +12,7 @@
     z-index: 30;
 
     #header-top{
-        height: 6em;
+        height: 5em;
         width: 100%;
         display: flex;
         position: relative;
@@ -123,6 +123,10 @@
                     &>img{
                         height: 1.5em;
                         filter: invert(100%);
+                    }
+
+                    &:hover{
+                        cursor: pointer;
                     }
                 }
             }
