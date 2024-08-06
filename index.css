@@ -17,6 +17,12 @@
     src: url("assets/fonts/OneShinhanBold.otf");
 }
 
+:root{
+    --primary-color: #0046ff;
+    --secondary-white: #DEE;
+
+}
+
 body {
     margin: 0;
     font-family: "OneShinhan";

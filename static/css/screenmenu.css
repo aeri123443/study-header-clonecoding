@@ -1,0 +1,148 @@
+#screen-menu {
+  width: 100%;
+  display: none;
+  position: fixed;
+  top: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 19px;
+  z-index: 50;
+  background-color: #005DF9;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+#screen-menu #screen-menu-top {
+  height: 5em;
+  width: 100%;
+  display: flex;
+  position: relative;
+  top: 0;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0);
+  border-bottom: 1px solid rgba(153, 153, 153, 0.5333333333);
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.0666666667);
+  color: white;
+  transition: all 0.3s ease;
+}
+#screen-menu #screen-menu-top .wrap-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  max-width: 90em;
+  min-width: 50em;
+}
+#screen-menu #screen-menu-top .wrap-header .logo-screen {
+  display: flex;
+}
+#screen-menu #screen-menu-top .wrap-header .logo-screen > img {
+  width: 11em;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: invert(100%) saturate(0%) brightness(200%);
+}
+#screen-menu #screen-menu-top .wrap-header .logo-screen > img:hover {
+  cursor: pointer;
+}
+#screen-menu #screen-menu-top .header-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+#screen-menu #screen-menu-top .header-right .languages {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+#screen-menu #screen-menu-top .header-right .languages:hover {
+  cursor: pointer;
+}
+#screen-menu #screen-menu-top .header-right .languages .languages-arrow {
+  display: flex;
+  align-items: center;
+}
+#screen-menu #screen-menu-top .header-right .languages .languages-arrow > img {
+  width: 0.5em;
+  filter: invert(100%);
+}
+#screen-menu #screen-menu-top .header-right .close-menu {
+  display: flex;
+  align-items: center;
+}
+#screen-menu #screen-menu-top .header-right .close-menu > img {
+  height: 1.5em;
+  filter: invert(100%);
+}
+#screen-menu #screen-menu-top .header-right .close-menu:hover {
+  cursor: pointer;
+}
+#screen-menu #screen-menu-bottom {
+  width: 100%;
+  height: calc(100vh - 5em);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+#screen-menu #screen-menu-bottom::-webkit-scrollbar {
+  width: 6px;
+}
+#screen-menu #screen-menu-bottom::-webkit-scrollbar-track {
+  background-color: var(--primary-color);
+}
+#screen-menu #screen-menu-bottom::-webkit-scrollbar-thumb {
+  background-color: rgba(14, 20, 29, 0.333);
+}
+#screen-menu #screen-menu-bottom::-webkit-scrollbar-button {
+  display: none;
+}
+#screen-menu #screen-menu-bottom #wrap-screen-menu-bottom {
+  width: 85%;
+  max-width: 90em;
+  min-width: 50em;
+}
+#screen-menu #screen-menu-bottom #wrap-screen-menu-bottom .screen-menu-items {
+  width: 100%;
+  padding-top: 3em;
+}
+#screen-menu #screen-menu-bottom #wrap-screen-menu-bottom .screen-menu-items .screen-menu-h1 {
+  margin: 0;
+  padding: 0.2em 0;
+  font-size: 2rem;
+  font-weight: 500;
+}
+#screen-menu #screen-menu-bottom #wrap-screen-menu-bottom .screen-menu-items .wrap-screen-menu-subitems {
+  display: flex;
+  flex-direction: row;
+}
+#screen-menu #screen-menu-bottom #wrap-screen-menu-bottom .screen-menu-items .wrap-screen-menu-subitems .screen-menu-subitems {
+  padding: 0;
+}
+#screen-menu #screen-menu-bottom #wrap-screen-menu-bottom .screen-menu-items .wrap-screen-menu-subitems .screen-menu-subitems .screen-menu-h2 {
+  width: 7.3em;
+  padding: 0.7em 0;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+#screen-menu #screen-menu-bottom #wrap-screen-menu-bottom .screen-menu-items .wrap-screen-menu-subitems .screen-menu-subitems > li {
+  list-style-type: none;
+  padding: 0.5em 0;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--secondary-white);
+}
+#screen-menu #screen-menu-bottom #wrap-screen-menu-bottom .screen-menu-items .wrap-screen-menu-subitems .screen-menu-subitems > li:hover {
+  cursor: pointer;
+  color: white;
+}/*# sourceMappingURL=screenmenu.css.map */

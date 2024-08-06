@@ -1,3 +1,4 @@
+const screenMenu = document.querySelector('#screen-menu');
 const headerTop = document.querySelector('#header-top');
 const headerBottom = document.querySelector('.header-bottom');
 const wrapSubHeader = document.querySelector('.wrap-sub-header');
@@ -8,6 +9,11 @@ const languagesArrowImg = document.querySelector('.languages-arrow').querySelect
 const allMenuImg = document.querySelector('.all-menu').querySelector('img');
 const logoImg = document.querySelector('.logo').querySelector('img');
 const logo = document.querySelector('.logo');
+const logoScreen = document.querySelector('.logo-screen');
+
+const allMenu = document.querySelector('.all-menu');
+const closeMenu = document.querySelector('.close-menu');
+const root = document.documentElement;
 
 const liGNBs = document.querySelectorAll('.li-gnb');
 const liGNB = document.querySelector('.li-gnb');
@@ -78,13 +84,13 @@ const topHidden = {
                 headerTop.style.top = '0';
             } else{
                 if (headerTop.dataset.expand === "true") { headerTop.style.top = '0'}
-                else {headerTop.style.top = '-6em'}
+                else {headerTop.style.top = '-5em'}
             }
 
             
         } else {
             if (headerTop.dataset.expand === "true") { headerTop.style.top = '0'}
-            else {headerTop.style.top = '-6em'}
+            else {headerTop.style.top = '-5em'}
         } 
         
     },
@@ -93,23 +99,52 @@ const topHidden = {
     },
 };
 
+const viewScreenMenu = {
+    true: () => {  
+        console.log('viewScreenMenu T');
+        // headerTop.ontransitionend = ()=>{};
+        screenMenu.style.display = "flex";
+        screenMenu.style.opacity = '1';
+        root.style.overflowY = "hidden";
+        screenMenu.ontransitionend = ()=>{
+            
+        };
+        
+        // screenMenu.style.display = "flex";
+    },
+    false: () => {
+        console.log('viewScreenMenu F');
+        screenMenu.style.opacity = '0';
+        root.style.overflowY = "scroll";
+        
+        screenMenu.ontransitionend = ()=>{
+            screenMenu.style.display = "none";
+        };
+        // screenMenu.style.display = "none";
+    }
+};
+
 
 // 속성 변화시 ..
 const callback = () => {
+    headerTop.dataset.viewscreenmenu === "true" ? viewScreenMenu.true(): viewScreenMenu.false();
     headerTop.dataset.hidden === "true" ? topHidden.true() : topHidden.false();
     headerTop.dataset.blur === "true" ? topBlur.true() : topBlur.false();
     headerTop.dataset.expand === "true" ? bottomExpand.true(): bottomExpand.false();
-
 };
 
 // 속성 변화 감지
 const observer = new MutationObserver(callback);
-const config = { attributes: true, attributeFilter: ['data-blur', 'data-expand'] };
+const config = { attributes: true, attributeFilter: ['data-blur', 'data-expand', 'data-transparency', 'data-viewscreenmenu'] };
 
 observer.observe(headerTop, config);
 
 
 logo.addEventListener('click', ()=>{
+    window.location.href = '/index.html';
+});
+
+logoScreen.addEventListener('click', ()=>{
     window.location.href = '/index.html';
 });
 
@@ -137,6 +172,13 @@ classHeader.addEventListener('mouseleave', function() {
     headerTop.dataset.expand = "false";
 });
 
+allMenu.addEventListener('click', ()=>{
+    headerTop.dataset.viewscreenmenu = true;
+});
+
+closeMenu.addEventListener('click', ()=>{
+    headerTop.dataset.viewscreenmenu = false;
+});
 
 // 스크롤 감지
 
@@ -196,3 +238,4 @@ if ( ((window.location.pathname) === '/') || ((window.location.pathname) === '/i
     headerTop.dataset.blur = "true";
     console.log(headerTop.dataset.blur);
 }
+
