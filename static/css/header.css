@@ -1,3 +1,56 @@
+@media (min-width: 1024px) {
+  #header-top {
+    height: 5em;
+  }
+  #header-top .wrap-header {
+    width: 85%;
+    max-width: 90em;
+    min-width: 50em;
+  }
+  .logo > img {
+    width: 11em;
+  }
+  .gnb {
+    display: flex;
+  }
+  .languages {
+    display: flex;
+  }
+}
+@media (min-width: 758px) and (max-width: 1023px) {
+  #header-top {
+    height: 3em;
+  }
+  #header-top .wrap-header {
+    width: 95%;
+  }
+  .logo > img {
+    width: 6em;
+  }
+  .gnb {
+    display: none;
+  }
+  .languages {
+    display: none;
+  }
+}
+@media (min-width: 335px) and (max-width: 757px) {
+  #header-top {
+    height: 3em;
+  }
+  #header-top .wrap-header {
+    width: 95%;
+  }
+  .logo > img {
+    width: 6em;
+  }
+  .gnb {
+    display: none;
+  }
+  .languages {
+    display: none;
+  }
+}
 .class-header {
   width: 100%;
   display: flex;
@@ -11,7 +64,6 @@
   z-index: 30;
 }
 .class-header #header-top {
-  height: 5em;
   width: 100%;
   display: flex;
   position: relative;
@@ -30,15 +82,11 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 85%;
-  max-width: 90em;
-  min-width: 50em;
 }
 .class-header #header-top .wrap-header .logo {
   display: flex;
 }
 .class-header #header-top .wrap-header .logo > img {
-  width: 11em;
   -o-object-fit: cover;
      object-fit: cover;
   filter: invert(100%) saturate(0%) brightness(200%);
@@ -50,7 +98,6 @@
   height: 100%;
   width: 100%;
   max-width: 40em;
-  display: flex;
   align-self: center;
   justify-content: center;
 }
@@ -85,7 +132,6 @@
   gap: 20px;
 }
 .class-header #header-top .wrap-header .header-right .languages {
-  display: flex;
   flex-direction: row;
   gap: 10px;
 }

@@ -1,3 +1,70 @@
+@import "./mixin";
+
+@include desktop {
+    #header-top{
+        height: 5em;
+        .wrap-header{
+            width: 85%;
+            max-width: 90em;
+            min-width: 50em;
+        }
+    }
+
+    .logo>img{
+        width: 11em;   
+    }
+
+    .gnb{
+        display: flex;
+    }
+
+    .languages{
+        display: flex;
+    }
+}
+
+@include tablet {
+    #header-top{
+        height: 3em;
+        .wrap-header{
+            width: 95%;
+        }
+    }
+    
+    .logo>img{
+        width: 6em;   
+    }
+
+    .gnb{
+        display: none;
+    }
+
+    .languages{
+        display: none;
+    }
+}
+
+@include mobile {
+    #header-top{
+        height: 3em;
+        .wrap-header{
+            width: 95%;
+        }
+    }
+    
+    .logo>img{
+        width: 6em;   
+    }
+
+    .gnb{
+        display: none;
+    }
+
+    .languages{
+        display: none;
+    }
+}
+
 .class-header{
     width: 100%;
     // min-height: 4em;
@@ -12,7 +79,7 @@
     z-index: 30;
 
     #header-top{
-        height: 5em;
+        // height: 5em;
         width: 100%;
         display: flex;
         position: relative;
@@ -32,15 +99,15 @@
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            width: 85%;
-            max-width: 90em;
-            min-width: 50em;
+            // width: 85%;
+            // max-width: 90em;
+            // min-width: 50em;
             
             .logo{
                 display: flex;
 
                 &>img{    
-                    width: 11em;    
+                    // width: 11em;    
                     object-fit: cover;
                     filter: invert(100%) saturate(0%) brightness(200%);
                     
@@ -54,7 +121,7 @@
                 height: 100%;
                 width: 100%;
                 max-width: 40em;
-                display: flex;
+                // display: flex;
                 align-self: center;
                 justify-content: center;
 
@@ -94,7 +161,7 @@
                 gap: 20px;
         
                 .languages{
-                    display: flex;
+                    // display: flex;
                     flex-direction: row;
                     gap: 10px;
 
