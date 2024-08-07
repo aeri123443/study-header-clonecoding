@@ -1,9 +1,11 @@
 const screenMenu = document.querySelector('#screen-menu');
+const mobileMenu = document.querySelector('#mobile-menu');
 const headerTop = document.querySelector('#header-top');
 const headerBottom = document.querySelector('.header-bottom');
 const wrapSubHeader = document.querySelector('.wrap-sub-header');
 const classHeader = document.querySelector('.class-header');
 const gnb = document.querySelector('.gnb');
+const ulGNB = document.querySelector('.ul-gnb');
 const languagesTxt = document.querySelector('.languages-txt');
 const languagesArrowImg = document.querySelector('.languages-arrow').querySelector('img');
 const allMenuImg = document.querySelector('.all-menu').querySelector('img');
@@ -13,6 +15,8 @@ const logoScreen = document.querySelector('.logo-screen');
 
 const allMenu = document.querySelector('.all-menu');
 const closeMenu = document.querySelector('.close-menu');
+const closeMobileMenu = document.querySelector('.wrap-close-mobile-menu');
+
 const root = document.documentElement;
 
 const liGNBs = document.querySelectorAll('.li-gnb');
@@ -21,6 +25,11 @@ const liGNB = document.querySelector('.li-gnb');
 const subHeaders = document.querySelectorAll('.sub-header');
 
 let preScrollTop = 0;
+
+// breakpoint
+const breakpointMobile = 335;
+const breakpointTablet = 758;
+const breakpointDesktop = 1024;
 
 // 사용자 정의 속성
 const topBlur = {
@@ -103,6 +112,7 @@ const viewScreenMenu = {
     true: () => {  
         console.log('viewScreenMenu T');
         // headerTop.ontransitionend = ()=>{};
+        
         screenMenu.style.display = "flex";
         screenMenu.style.opacity = '1';
         root.style.overflowY = "hidden";
@@ -124,13 +134,41 @@ const viewScreenMenu = {
     }
 };
 
+const viewMobileMenu = {
+    true: () => {
+        mobileMenu.style.display = "flex";
+        root.style.overflowY = "hidden";
+    },
+    false: () => {
+        // mobileMenu.style.display = "flex";
+        mobileMenu.style.display = "none";
+    }
+}
+
 
 // 속성 변화시 ..
 const callback = () => {
-    headerTop.dataset.viewscreenmenu === "true" ? viewScreenMenu.true(): viewScreenMenu.false();
     headerTop.dataset.hidden === "true" ? topHidden.true() : topHidden.false();
     headerTop.dataset.blur === "true" ? topBlur.true() : topBlur.false();
     headerTop.dataset.expand === "true" ? bottomExpand.true(): bottomExpand.false();
+    // headerTop.dataset.viewscreenmenu === "true" ? viewScreenMenu.true(): viewScreenMenu.false();
+
+    if ( headerTop.dataset.viewscreenmenu === "true" ) {
+        const windowWidth = window.innerWidth; 
+
+        if ( windowWidth >= breakpointDesktop ) {
+            viewScreenMenu.true();
+            viewMobileMenu.false();
+            
+        } else {
+            viewScreenMenu.false();
+            viewMobileMenu.true();
+        }
+
+    } else {
+        viewScreenMenu.false();
+        viewMobileMenu.false();
+    }
 };
 
 // 속성 변화 감지
@@ -164,7 +202,7 @@ liGNBs.forEach((item, index) => {
     })
 });
 
-gnb.addEventListener('mouseover', function() {
+ulGNB.addEventListener('mouseover', function() {
     headerTop.dataset.expand = "true";
 });
 
@@ -180,6 +218,10 @@ closeMenu.addEventListener('click', ()=>{
     headerTop.dataset.viewscreenmenu = false;
 });
 
+closeMobileMenu.addEventListener('click', ()=>{
+    viewMobileMenu.false();
+    headerTop.dataset.viewscreenmenu = "false";
+});
 // 스크롤 감지
 
 window.addEventListener('scroll', function() {
@@ -216,6 +258,22 @@ window.addEventListener('scroll', function() {
     }
 });
 
+window.addEventListener('resize', function() {
+    if ( headerTop.dataset.viewscreenmenu === "true" ) {
+        const windowWidth = window.innerWidth; 
+
+        if ( windowWidth >= breakpointDesktop ) {
+            viewScreenMenu.true();
+            viewMobileMenu.false();
+        } else {
+            viewScreenMenu.false();
+            viewMobileMenu.true();
+        }
+    } else {
+        viewScreenMenu.false();
+        viewMobileMenu.false();
+    }
+});
 
 // 기본 호출 시 실행
 

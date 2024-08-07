@@ -103,6 +103,7 @@
             // max-width: 90em;
             // min-width: 50em;
             
+
             .logo{
                 display: flex;
 
@@ -128,16 +129,20 @@
                 &>ul{
                     height: 100%;
                     width: 80%;
+
                     list-style-type: none;
                     display: flex;
                     flex-direction: row;   
                     justify-content: space-between;
+                    
                     margin: 0;
                     padding: 0;
-
+                    
                     &>li{
                         display: flex;
+                        flex-grow: 1;
                         align-items: center;
+                        justify-content: center;
                         height: 100%;
                         // padding: 0 1em;
                         padding: 0;
@@ -223,15 +228,14 @@
                 justify-content: flex-start;
                 align-items: flex-start;
                 transition: opacity 0.3s ease;
-                height: calc(100% - 6em);
-    
+                height: calc(100% - 5em);
     
                 .area-sub-menu{
                     display: flex;
                     flex-direction: column;
                     width: 14em;
                     height: 100%;
-                    padding: 2.3em;
+                    padding: 1em;
                     border-left: 1.7px solid #e6e6e6;
                     box-sizing: border-box;
     
@@ -244,11 +248,11 @@
                     }
     
                     .sub-menu-list{
-    
                         &>ul{     
                             list-style-type: none;
                             margin: 0;
                             padding: 0;
+
                             &>li{
                                 font-size: 14px;
                                 font-weight: 500;
@@ -265,11 +269,5 @@
                 }
             }
         }
-
     }
-
-    // .wrap-header:hover + .wrap-sub-header{
-    //     height: 19em;
-    //     opacity: 1;
-    // }
 }
