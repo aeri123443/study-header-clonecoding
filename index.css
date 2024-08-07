@@ -18,9 +18,12 @@
 }
 
 :root{
+    /* colors */
     --primary-color: #0046ff;
     --secondary-white: #DEE;
 
+    /* filters */
+    --filter-black-to-blue: invert(18%) sepia(100%) saturate(6142%) hue-rotate(227deg) brightness(102%) contrast(109%);
 }
 
 body {

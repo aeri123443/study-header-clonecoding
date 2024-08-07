@@ -113,7 +113,9 @@
 }
 .class-header #header-top .wrap-header .gnb > ul > li {
   display: flex;
+  flex-grow: 1;
   align-items: center;
+  justify-content: center;
   height: 100%;
   padding: 0;
 }
@@ -180,14 +182,14 @@
   justify-content: flex-start;
   align-items: flex-start;
   transition: opacity 0.3s ease;
-  height: calc(100% - 6em);
+  height: calc(100% - 5em);
 }
 .class-header .header-bottom .wrap-sub-header .sub-header .area-sub-menu {
   display: flex;
   flex-direction: column;
   width: 14em;
   height: 100%;
-  padding: 2.3em;
+  padding: 1em;
   border-left: 1.7px solid #e6e6e6;
   box-sizing: border-box;
 }
